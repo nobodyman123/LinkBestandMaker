@@ -5,54 +5,89 @@
 #include <iostream>
 #include "windows.h"
 
-typedef struct LinkedListNode { //struct for node in a linked list
-	const char * url; //must have value (url)
-	LinkedListNode * next; //and pointer to next node in list
-} node; //typedef as node for easy use
+//structure for node in a linked list; contains url and pointer to next node in list
+typedef struct LinkedListNode {
+	const char * url;
+	LinkedListNode * next;
+} node;
 
-node* create_node() { //function to creat LinkedListNode
-	node* n; //create pointer to struct node
-	n = (node*)malloc(sizeof(node)); //alloc some memory for node
-	ZeroMemory(n, sizeof(node)); //clear memory for node (so next would be NULL instead of unintialised)
-	return n; //return node
-	
+//creates node with url: "node_url"
+node* create_node(const char* node_url) {
+	node* n;
+	n = (node*)malloc(sizeof(node));
+	ZeroMemory(n, sizeof(node));
+	n->url = node_url;
+	return n;
 }
 
-node* add_list_item(node* lNode,char* url) {
-	node* item = lNode;
-	item->url = url;
-	item->next = create_node();
+//returns last node of list with first node: "first_node"
+node* get_last_node(node* first_node) {
+	if (first_node->next != NULL) {
+		get_last_node(first_node->next);
+	}
+	else if (first_node->next == NULL) {
+		return first_node;
+	}
+}
+
+//adds item to list with first node: "firs_node"; new node will have url: "node_url"
+node* add_list_item(node* first_node, const char* node_url) {
+	node* last_node = get_last_node(first_node);
+	last_node->next = create_node(node_url);
+	return last_node->next;
+}
+
+//deletes item with url: "node_url" in list with first node: "first_node"
+void delete_list_item(node* first_node, const char* node_url) {
+	const char* next_url = first_node->next->url;
+	node* next_next = first_node->next->next;
+	if (first_node->next == NULL) {
+		printf("ERROR: node not found");
+		//prints error message if node with url:"node_url" is not found in list
+	}
+	else if (next_url != node_url) {
+		delete_list_item(first_node->next, node_url);
+		//re-iterates
+	}
+	else if (next_url == node_url) {
+		free(first_node->next);
+		first_node->next = next_next;
+		//deletes desired node
+	}
+}
+
+//prints urls of all nodes in list with first node: "first_node"
+//format: node["pointer to node"]: "url"
+void print_list(node* first_node) {
+	if (first_node->next != NULL) {
+		printf("node [%p]: %s\n", first_node, first_node->url);
+		print_list(first_node->next);
+	}
+	else if(first_node->next == NULL) {
+		printf("node [%p]: %s\n", first_node, first_node->url);
+		printf("END\n");
+	}
 }
 
 int main() {
+	//TEST CODE
 
-	node* n1 = create_node();
-	n1->url = "https://www.google.com";
-	n1->next = create_node();
-	n1->next->url = "https://devdocs.io/c/language/scope";
-	n1->next->next = create_node();
-	
-	//testing url and next vars of n1 and n2
-	printf("The URL of node 1 = %s\n", n1->url);
-	printf("The URL of node 2 = %s\n", n1->next->url);
-	printf("And the next node in the list is %p\n", n1->next);
-	printf("The next node after node 2 is %p\n", n1->next->next);
-	printf("node 3 URL: %s\n", n1->next->next->url);
-	printf("node 3 pointer: %p\n", n1->next->next->next);
+	//create first node in list with url: NULL
+	node* first = create_node(NULL);
 
-	//freeing memory allocated for n1 and n2
-	free(n1);
+	//add nodes to list
+	add_list_item(first, "https://devdocs.io/c/");
+	add_list_item(first, "https://en.wikibooks.org/wiki/C_Programming/Simple_input_and_output");
+
+	//print list
+	print_list(first);
+	printf("\n");
+
+	//delete item from list
+	delete_list_item(first, "https://devdocs.io/c/");
+
+	//print new list
+	print_list(first);
 	
 	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
