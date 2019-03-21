@@ -7,30 +7,60 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project2", "Project2\Projec
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PapasLinkedList", "PapasLinkedList\PapasLinkedList.vcxproj", "{1979C60E-E11D-4A10-8421-3F7BF36C5C60}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fibonacci_Recursive", "Fibonacci_Recursive\Fibonacci_Recursive.vcxproj", "{765D49FF-FAA3-47F3-A405-67B9E7BD988C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fibonacci_NonRecursive", "Fibonacci_NonRecursive\Fibonacci_NonRecursive.vcxproj", "{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Debug|x64.ActiveCfg = Debug|x64
 		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Debug|x64.Build.0 = Debug|x64
 		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Debug|x86.ActiveCfg = Debug|Win32
 		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Debug|x86.Build.0 = Debug|Win32
+		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Release|Any CPU.ActiveCfg = Release|Win32
 		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Release|x64.ActiveCfg = Release|x64
 		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Release|x64.Build.0 = Release|x64
 		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Release|x86.ActiveCfg = Release|Win32
 		{374623E5-9619-4AE5-BFF2-3EBE4C67056C}.Release|x86.Build.0 = Release|Win32
+		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Debug|x64.ActiveCfg = Debug|x64
 		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Debug|x64.Build.0 = Debug|x64
 		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Debug|x86.ActiveCfg = Debug|Win32
 		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Debug|x86.Build.0 = Debug|Win32
+		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Release|Any CPU.ActiveCfg = Release|Win32
 		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Release|x64.ActiveCfg = Release|x64
 		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Release|x64.Build.0 = Release|x64
 		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Release|x86.ActiveCfg = Release|Win32
 		{1979C60E-E11D-4A10-8421-3F7BF36C5C60}.Release|x86.Build.0 = Release|Win32
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Debug|x64.ActiveCfg = Debug|x64
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Debug|x64.Build.0 = Debug|x64
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Debug|x86.ActiveCfg = Debug|Win32
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Debug|x86.Build.0 = Debug|Win32
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Release|Any CPU.ActiveCfg = Release|Win32
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Release|x64.ActiveCfg = Release|x64
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Release|x64.Build.0 = Release|x64
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Release|x86.ActiveCfg = Release|Win32
+		{765D49FF-FAA3-47F3-A405-67B9E7BD988C}.Release|x86.Build.0 = Release|Win32
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Debug|x64.ActiveCfg = Debug|x64
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Debug|x64.Build.0 = Debug|x64
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Debug|x86.ActiveCfg = Debug|Win32
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Debug|x86.Build.0 = Debug|Win32
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Release|Any CPU.ActiveCfg = Release|Win32
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Release|x64.ActiveCfg = Release|x64
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Release|x64.Build.0 = Release|x64
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Release|x86.ActiveCfg = Release|Win32
+		{661F67B9-B6C5-4F99-B9F9-47B94293DC6E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
