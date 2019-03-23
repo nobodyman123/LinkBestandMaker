@@ -8,39 +8,68 @@
 typedef struct LinkedListNode { //struct for node in a linked list
 	const char * url; //must have value (url)
 	LinkedListNode * next; //and pointer to next node in list
-} node; //typedef as node for easy use
+} NODE, *PNODE;
 
-struct LinkedList {
-	node* First;
-	node* Last;
-};
-
-node* create_node(const char* url) { //function to creat LinkedListNode
-	node* n; //create pointer to struct node
-	n = (node*)malloc(sizeof(node)); //alloc some memory for node
-	ZeroMemory(n, sizeof(node)); //clear memory for node (so next would be NULL instead of unintialised)
-	n->url = url; //give node url
-	return n; //return node
-
+PNODE create_node(const char* url) {
+	PNODE n =(PNODE)malloc(sizeof(NODE));
+	ZeroMemory(n, sizeof(NODE));
+	n->url = url; 
+	return n; 
 }
 
+
+typedef struct LinkedList {
+	PNODE First;
+	PNODE Last;
+
+	void AddNode(const char* url)
+	{
+		PNODE newNode = create_node(url); 
+		if(!Last) {
+			First=Last=newNode;
+		} else
+		{
+			Last->next=newNode;
+			Last=Last->next;
+		}
+	}
+
+	void Print()
+	{
+		PNODE node = First;
+		int nodenumber=1;
+		do
+		{
+			printf("The URL of node %d = %s\n", nodenumber++, node->url);
+			node=node->next;
+		} while (node);
+	}
+
+	void Free()
+	{
+		PNODE node = First;
+		while(node)
+		{
+			PNODE current = node;
+			node=node->next;
+			free(current);
+		}
+	}
+} NODELIST;
+
+
+
 int main() {
+	NODELIST list;
+	list.First=list.Last=NULL;
 
-	node* n1 = create_node("https://www.google.com");
-	node* n2 = create_node("https://devdocs.io/c/language/scope");
-	n1->next = n2;
+	list.AddNode("https://www.google.com");
+	list.AddNode("https://devdocs.io/c/language/scope");
 
-	//testing url and next vars of n1 and n2
-	printf("The URL of node 1 = %s\n", n1->url);
-	printf("The URL of node 2 = %s\n", n2->url);
-	printf("And the next node in the list is %p\n", n1->next);
-	printf("Would you look at that, the pointer for node 2 is also %p\n", n2);
-	printf("The next node after node 2 is %p\n", n2->next);
+	list.Print();
 
-	//freeing memory allocated for n1 and n2
-	free(n1);
-	free(n2);
-
+	list.Free();
+	
 	return 0;
 }
 
